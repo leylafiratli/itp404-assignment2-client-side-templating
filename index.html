@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href=main.css>
+  <title>Reddit API</title>
+  <h1>Reddit API</h1>
+</head>
+<body>
+  <form id="form">
+    Search: <input type = "text" name ="search" id="search_text">
+    <input type = "submit" value= "Submit" id = "submit">
+  </form>
+  <div id= "results"> </div>
+
+  <template id= "reddit_template">
+    {{#each data}}
+      <div>
+        <h1><a href="{{data.url}}" target="_blank">/{{data.title}}</a></h1>
+        <h2>/{{data.score}}</h2>
+        <h2>/{{formatted-data data.subreddit_subscribers}}</h2>
+        <h2>
+          {{#if num_comments>0}}
+            {{formatted-data data.num_comments}}
+          {{else}}
+            No comments
+          {{/if}}
+        </h2>
+      </div>
+    {{/each}}
+  </template>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="handlebars-v4.1.2.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
